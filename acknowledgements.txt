@@ -1,0 +1,9 @@
+I would like to give credit and extend my thanks to the people who
+helped me in making foom.
+
+Professor Arka Majumdar:
+    My advisor, who kindly supported my endeavors.
+
+Joe Finney:
+    The awesome guy who helped me through many of my programming
+    struggles, and kindly looked over my code when I was stumped.
