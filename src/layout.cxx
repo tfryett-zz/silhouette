@@ -16,12 +16,12 @@
 
 #include "../include/layout.hxx"
 // keep the gdsfile header here so that it is not automatically 
-// included when one includes "foom.hxx". This will add a barrier for
+// included when one includes "sil.hxx". This will add a barrier for
 // users against creating and handling GDS_File classes themselves,
 // which they should not do.
 #include "../include/gdsfile.hxx" 
 
-namespace foom {
+namespace sil {
 
   Layout::Layout() {}
 
@@ -34,17 +34,17 @@ namespace foom {
   }
 
   void Layout::write(std::string usrFilename) {
-    foom::utils::GDS_File myFile(usrFilename);
+    sil::utils::GDS_File myFile(usrFilename);
     myFile.Write(this->cellVec);
   }
 
-} // namespace foom
+} // namespace sil
 
 // Add the python extensions
 void export_Layout() {
-  boost::python::class_<foom::Layout>("Layout")
-    .def("addCell", &foom::Layout::addCell)
-    .def("getCells", &foom::Layout::getCells)
-    .def("write", &foom::Layout::write)
+  boost::python::class_<sil::Layout>("Layout")
+    .def("addCell", &sil::Layout::addCell)
+    .def("getCells", &sil::Layout::getCells)
+    .def("write", &sil::Layout::write)
     ;
 }

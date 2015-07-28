@@ -16,7 +16,7 @@
 
 #include "../include/float64.hxx"
 
-namespace foom {
+namespace sil {
   namespace utils {
 
     float64::float64() {
@@ -120,4 +120,4 @@ namespace foom {
     }
 
   } // namespace utils
-} // namespace foom
+} // namespace sil

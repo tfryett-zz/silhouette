@@ -17,7 +17,7 @@
 #include "../include/line.hxx"
 #include <cmath>
 
-namespace foom {
+namespace sil {
 
   // normal constructor 
   LineSeg::LineSeg(CoordPnt startSeg, CoordPnt endSeg) {

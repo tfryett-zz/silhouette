@@ -21,7 +21,7 @@
 #include <sstream>
 #include <stdexcept>
 
-namespace foom {
+namespace sil {
 
   // must have the concept of the cell class to have references to
   // instances of the class

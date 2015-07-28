@@ -34,7 +34,7 @@ typedef double float64;
 #include "cell.hxx"
 #include "polygon.hxx"
 
-namespace foom {
+namespace sil {
   /// Prevent users from accidentally using utility methods that they should
   /// not normally be using by nesting it within an obvious nested namespace.
   namespace utils {
@@ -270,6 +270,6 @@ namespace foom {
 
     }; // class GDS_FILE
   } // namespace utils
-} // namespace foom
+} // namespace sil
 
 #endif // GDS_FILE_HXX

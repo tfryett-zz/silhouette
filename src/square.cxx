@@ -16,7 +16,7 @@
 
 #include "../include/square.hxx"
 
-namespace foom {
+namespace sil {
   // Use the default constructor for both the Rectangle and the Polygon default
   // constructors 
   Square::Square(void) : Rectangle() {};

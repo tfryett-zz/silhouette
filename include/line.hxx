@@ -20,7 +20,7 @@
 #include "coord.hxx"
 #include <vector>
 
-namespace foom {
+namespace sil {
 
   /// \brief The Line Class - it is not a drawable quantitiy - It is not a 
   /// drawable object - for utility purposes
@@ -117,6 +117,6 @@ namespace foom {
   /// 2 --> Counterclockwise
   int orientation(LineSeg seg, CoordPnt pnt);
 
-} // namespace foom
+} // namespace sil
 
 #endif // LINE_HXX

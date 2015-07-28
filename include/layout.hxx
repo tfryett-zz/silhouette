@@ -23,11 +23,11 @@
 #include <boost/python.hpp>
 #include "cell.hxx"
 
-namespace foom {
+namespace sil {
 
   /// class Layout
   ///
-  /// This class is the overall container for foom. That is if you
+  /// This class is the overall container for sil. That is if you
   /// wish to import from or write to a GDSII file you must do so
   /// through this class. Think of this class as a library of Cell
   /// objects which constitute the fabriaction flow you are wishing

@@ -20,7 +20,7 @@
 #include <cmath>
 #include <stdexcept>
 
-namespace foom {
+namespace sil {
 
   Oval::Oval(CoordPnt usrCenter, double majorAxisLength, double minorAxisLength,
              int numCoordPnts) {

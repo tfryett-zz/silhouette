@@ -17,7 +17,7 @@
 #include "../include/cellReference.hxx"
 #include "../include/cell.hxx"
 
-namespace foom {
+namespace sil {
 
   CellReference::CellReference(Cell& referenceCell, int centerX, 
 			       int centerY) : refCell(referenceCell) {

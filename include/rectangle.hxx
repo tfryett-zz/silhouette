@@ -19,7 +19,7 @@
 
 #include "polygon.hxx"
 
-namespace foom {
+namespace sil {
   /*!
     \brief Class to create Rectangles.
    */

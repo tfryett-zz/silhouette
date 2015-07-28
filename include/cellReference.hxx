@@ -23,7 +23,7 @@
 #include <limits>
 #include <stdexcept>
 
-namespace foom {
+namespace sil {
 
 class Cell;
 

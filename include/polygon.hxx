@@ -24,7 +24,7 @@
 #include "coord.hxx"
 #include "line.hxx"
 
-namespace foom {
+namespace sil {
 
   class Polygon {
   private:

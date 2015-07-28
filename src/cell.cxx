@@ -17,7 +17,7 @@
 #include "../include/cell.hxx"
 #include "../include/gdsfile.hxx" // must keep
 
-namespace foom {
+namespace sil {
 
   // The full blooded Cell object constructor.
   Cell::Cell(std::string usrCellname) {
@@ -48,7 +48,7 @@ namespace foom {
   }
 
   std::vector<Polygon>& Cell::getPolygonList() const {
-    return const_cast<std::vector<foom::Polygon> &> (this->polyList);
+    return const_cast<std::vector<sil::Polygon> &> (this->polyList);
   }
   
   // Returns the data about when this cell was created 
@@ -56,7 +56,7 @@ namespace foom {
     return this->timeCreated;
   }
 
-  void Cell::addPolygon(foom::Polygon usrPolygon) {
+  void Cell::addPolygon(sil::Polygon usrPolygon) {
     this->polyList.push_back(usrPolygon);
   }
 
@@ -69,22 +69,22 @@ namespace foom {
   }
 
   std::vector<Path>& Cell::getPathList() const {
-    return const_cast<std::vector<foom::Path> &> (this->pathList);
+    return const_cast<std::vector<sil::Path> &> (this->pathList);
   }
 
   std::vector<CellReference>& Cell::getCellReferenceList() const {
-    return const_cast<std::vector<foom::CellReference> &> (this->cellReferenceList);
+    return const_cast<std::vector<sil::CellReference> &> (this->cellReferenceList);
   }
 
   std::vector<CellArray>& Cell::getCellArrayList(void) const {
-    return const_cast<std::vector<foom::CellArray> &> (this->cellArrayList);
+    return const_cast<std::vector<sil::CellArray> &> (this->cellArrayList);
   }
 
 }
 
 void export_Cell() {
-  boost::python::class_<foom::Cell>("Cell", boost::python::init<std::string>())
-    .def("setCellname", &foom::Cell::setCellname)
-    .def("getCellname", &foom::Cell::getCellname)
+  boost::python::class_<sil::Cell>("Cell", boost::python::init<std::string>())
+    .def("setCellname", &sil::Cell::setCellname)
+    .def("getCellname", &sil::Cell::getCellname)
     ;  
 }

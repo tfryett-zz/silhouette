@@ -16,7 +16,7 @@
 
 #include "../include/path.hxx"
 
-namespace foom {
+namespace sil {
 
   Path::Path(std::vector<CoordPnt> usrCoordPath, double usrPathWidth, 
 	     int usrPathType, int usrLayer, int usrDataType) {

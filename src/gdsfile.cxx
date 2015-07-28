@@ -16,7 +16,7 @@
 
 #include "../include/gdsfile.hxx"
 
-namespace foom {
+namespace sil {
   /// Prevent users from accidentally using utility methods that they should
   /// not normally be using by nesting it within an obvious nested namespace.
   namespace utils {
@@ -637,4 +637,4 @@ namespace foom {
 
 
   } // namespace utils
-} // namespace foom
+} // namespace sil

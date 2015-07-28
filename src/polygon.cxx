@@ -16,7 +16,7 @@
 
 #include "../include/polygon.hxx"
 
-namespace foom {
+namespace sil {
 
   Polygon::Polygon(std::vector<CoordPnt> usrVertices, int usrLayer, 
 		   int usrDataType) {
@@ -153,7 +153,7 @@ namespace foom {
   }
 
   std::vector<CoordPnt> &Polygon::getVertices() const {
-    return const_cast<std::vector<foom::CoordPnt> &> (this->vertices);
+    return const_cast<std::vector<sil::CoordPnt> &> (this->vertices);
   }
 
   bool Polygon::containsInternalVoid(std::vector<CoordPnt> usrVertices) {
@@ -268,4 +268,4 @@ namespace foom {
     return (intersectionCount % 2 == 1);
   }
 
-} // end namespace foom
+} // end namespace sil

@@ -23,7 +23,7 @@
 #include <cmath>
 #include <stdexcept>
 
-namespace foom {
+namespace sil {
 
 
   /// \brief A class to create ovals of any specification.

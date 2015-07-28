@@ -19,7 +19,7 @@
 
 #include <string>
 
-namespace foom {
+namespace sil {
   
   /// \brief The Coordinate Point Class - Is not a drawable object - for utility
   /// purposes

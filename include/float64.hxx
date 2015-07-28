@@ -23,7 +23,7 @@
 #include <sstream>
 #include <stdexcept>
 
-namespace foom {
+namespace sil {
   namespace utils {
 
     class float64 {

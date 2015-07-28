@@ -36,7 +36,7 @@ struct timeData {
   int second; 
 };
 
-namespace foom {
+namespace sil {
 
   /// Cells that are added to a Layout can be considered to be a
   /// component of a larger fabrication flow. An example would be
@@ -114,7 +114,7 @@ namespace foom {
     /// \brief Returns the vector of CellArrays contained in this Cell.
     std::vector<CellArray>& getCellArrayList(void) const;
   }; // class Cell
-} // namespace foom
+} // namespace sil
 
 // Python extensions
 void export_Cell(void);

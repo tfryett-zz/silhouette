@@ -17,7 +17,7 @@
 #include "../include/rectangle.hxx"
 #include "../include/coord.hxx"
 
-namespace foom {
+namespace sil {
 
   // This constructor does the same exact thing as the default constructor for 
   // the polygon class - so just call it to do the work.

@@ -22,7 +22,7 @@
 #include <stdexcept>
 #include <sstream>
 
-namespace foom {
+namespace sil {
 
   class Path {
   private:

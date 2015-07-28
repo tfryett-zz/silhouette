@@ -17,7 +17,7 @@
 #include "../include/oval.hxx"
 #include "../include/circle.hxx"
 
-namespace foom {
+namespace sil {
 
   Circle::Circle(CoordPnt usrCenter, double usrRadius) :
     Oval(usrCenter, usrRadius, usrRadius) {}

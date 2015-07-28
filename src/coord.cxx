@@ -18,7 +18,7 @@
 #include <sstream>
 #include "../include/coord.hxx"
 
-namespace foom {
+namespace sil {
 
   /*! 
     The default constructor. Creates a coordinate point at the origin

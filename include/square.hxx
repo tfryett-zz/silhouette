@@ -19,7 +19,7 @@
 
 #include "rectangle.hxx" // also includes "coord.hxx"
 
-namespace foom {
+namespace sil {
 
   /*!
     \brief Class for making squares.

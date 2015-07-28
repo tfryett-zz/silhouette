@@ -17,7 +17,7 @@
 #include "../include/cellArray.hxx"
 #include "../include/cell.hxx"
 
-namespace foom {
+namespace sil {
 
   CellArray::CellArray(Cell& cell, CoordPnt usrStartingPos, 
 		       int usrNumCol, int usrNumRow, double usrXSpacing, 

@@ -19,7 +19,7 @@
 
 #include "oval.hxx"
 
-namespace foom {
+namespace sil {
 
   class Circle : public Oval {
   private:
