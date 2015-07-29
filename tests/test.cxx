@@ -3,6 +3,7 @@
 #include <iostream>
 #include <bitset>
 
+
 int main() {
 
   sil::Layout FullStructure;
@@ -11,14 +12,6 @@ int main() {
   cell.addPolygon(mycirc);
   FullStructure.addCell(cell);
   FullStructure.write("testing.gds");
-
-  sil::utils::float64 mystuff;
-  mystuff = -2.0;
-  std::cout << mystuff.getGDSIIrepresentation() << std::endl;
-
-  std::bitset<8> myset;
-  myset[0] = 1;
-  std::cout << myset << std::endl;
 
   return 0;
 }

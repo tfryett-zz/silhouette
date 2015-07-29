@@ -15,6 +15,7 @@
 // limitations under the License.
 
 #include "../include/float64.hxx"
+#include <iostream>
 
 namespace sil {
   namespace utils {
@@ -42,13 +43,15 @@ namespace sil {
       else {
 	exponent = (int) log(num)/log(16.0);
 	mantissa = num/pow(16.0, exponent);
+	std::cout << "first exponent " << exponent << std::endl;
+	std::cout << "first mantissa " << mantissa << std::endl;
 	// may be off by one power of 16
 	if (mantissa < 1.0/16.0) {
 	  mantissa *= 16.0;
-	  exponent++;
+	  exponent--;
 	} else if (mantissa >= 1.0) {
 	  mantissa /= 16.0;
-	  exponent--;
+	  exponent++;
 	}
 	if (!(mantissa < 1 && mantissa >= 1.0/16.0)) {
 	  std::stringstream errorMsg;
@@ -71,6 +74,8 @@ namespace sil {
 
       int numOfExponentBits = 7;
       for (int i = 1; i <= numOfExponentBits; i++) {
+	std::cout << "i: " << i << " => "<< 128/pow(2, i) << std::endl;
+	std::cout << "exponent " << exponent << std::endl;
 	if (exponent >= 128/pow(2, i)) {
 	  this->GDSII_representation[end - i] = 1;
 	  exponent -= 128/pow(2, i);

@@ -30,7 +30,7 @@ namespace sil {
       this->generations = 1; // keep only the last version of each structure
       this->format = 0; // by default be a archive formated file
       this->databaseUnits = 1e-3; // databaseUnits are one thousandth of a user units
-      this->userUnits = 1e-9; // one nanometer
+      this->userUnits = 1e-9*this->databaseUnits; // one nanometer
       this->refLib1.resize(44, '\0');
       this->refLib2.resize(44, '\0');
       this->sysLittleEndian = this->sysIsLittleEndian();
@@ -266,7 +266,6 @@ namespace sil {
 	this->writeInt32ToFile(curX);
 	int32_t curY = xy->getY()/this->databaseUnits;
 	this->writeInt32ToFile(curY);
-	std::cout << this->databaseUnits << "\n";
       }
       // rerecord the first one as is GDS2 standard (marks the end of 
       // a polygon)
@@ -522,10 +521,31 @@ namespace sil {
     }
 
     void GDS_File::writeFloat64ToFile(float64 data) {
+      int numBytes = 8; // 64 bit => 8 bytes with 8 bits each
+      int numBitsPerByte = 8;
+      int endOfByte = 7;
+      char output[numBytes];
+      // set all bits to 0
+      for (int i = 0; i < numBytes; i++)
+	output[i] = 0x00; 
 
-      std::bitset<64> bitsToWrite; // all bits are set to zero
+      // use bitwise operations
+      //
+      // set bit x in number (set means make it be 1)
+      // number |= 1 << x
+      //
+      // clear bit x in number
+      // number &= ~(1 << x)
+      //
+      // toggle bit x in number
+      // number ^= 1 << x
+      //
+      // check bit x
+      // bit = (number >> x) & 1
+  
+      // leftmost bit specifies negative (1) or positive (0)
       if (data < 0) {
-	bitsToWrite[0] = 1;
+	output[0] |= 1 << endOfByte;
 	data = -data;
       }
 
@@ -533,18 +553,19 @@ namespace sil {
       double mantissa;
       double error = 1e-9;
       if (data < 1e-77) // 16^{-64} smallest number possible
-	bitsToWrite.reset(); // all to zero. Represents zero
+	output[0] = 0x00; // we only have touched first byte so only need to reset first byte
       else {
 	exponent = (int) log(data)/log(16.0);
 	mantissa = data/pow(16.0, exponent);
 	// may be off by one power of 16
 	if (mantissa < 1.0/16.0) {
 	  mantissa *= 16.0;
-	  exponent++;
+	  exponent--;
 	} else if (mantissa >= 1.0) {
 	  mantissa /= 16.0;
-	  exponent--;
+	  exponent++;
 	}
+
 	if (!(mantissa < 1 && mantissa >= 1.0/16.0)) {
 	  std::stringstream errorMsg;
 	  errorMsg << "Mantissa must be inbetween 1 and 1/16. "
@@ -558,49 +579,47 @@ namespace sil {
 		   << "\n";
 	  throw std::logic_error(errorMsg.str());
 	}
-	  
-      }
 
-      // we need to have an exponential offset
-      exponent += 64;
+	// we need to have an exponential offset
+	exponent += 64;
+
+      }
 
       int numOfExponentBits = 7;
       for (int i = 1; i <= numOfExponentBits; i++) {
 	if (exponent >= 128/pow(2, i)) {
-	  bitsToWrite[i] = 1;
+	  output[0] |= 1 << endOfByte - i;
 	  exponent -= 128/pow(2, i);
 	}
       }
 
-      int numOfMantissaBits = 7*8;
-      int bitOffset = 7; // start at the eighth bit
-      for (int i = 1; i <= numOfMantissaBits; i++) {
-	if (mantissa >= 1.0/pow(2, i)) {
-	  bitsToWrite[i + bitOffset] = 1;
-	  mantissa -= 1.0/pow(2, i);
-	}
-      }
 
-      int numBytes = 8; // 64 bits is 8 bytes
-      int numBitsInByte = 8;
-      char dataToWrite[numBytes];
-      for (int i = 0; i < numBytes; i++) {
-	std::bitset<8> byte;
-	for (int j = 0; j < numBitsInByte; j++) {
-	  byte[j] = bitsToWrite[j + i*numBitsInByte];
+      int bitNum = 1;
+      for (int byteNum = 1; byteNum <= numBytes; byteNum++) {
+	for (int bitOffset = 0; bitOffset < numBitsPerByte; bitOffset++) {
+	  double bitValue = 1.0/pow(2, bitNum);
+	  bitNum++;
+	  if (mantissa >= bitValue) {
+	    output[byteNum] |= 1 << endOfByte - bitOffset;
+	    mantissa -= bitValue;
+	  }
 	}
-	dataToWrite[i] = (char) byte.to_ulong();
       }
 
       // gdsII file format is written in big endian
+      /*
       if (this->sysLittleEndian) {
 	char dataCopy[numBytes];
-	strcpy(dataCopy, dataToWrite);
-	for (int byteOffset = 0; byteOffset < numBytes; byteOffset++)
-	  dataToWrite[byteOffset] = dataCopy[numBytes - 1 - byteOffset];
+	strcpy(dataCopy, output);
+	for (int byteOffset = 0; byteOffset < numBytes; byteOffset++) {
+	  output[byteOffset] = dataCopy[numBytes - 1 - byteOffset];
+	  std::cout << std::bitset<8>(dataCopy[byteOffset]);
+	}
+	std::cout << std::endl;
       } 
+      */
 
-      this->outputFile.write(reinterpret_cast<char*>(&dataToWrite), numBytes*sizeof(char));      
+      this->outputFile.write(reinterpret_cast<char*>(&output), numBytes*sizeof(char));      
     }
 
     void GDS_File::writeCharToFile(char data[], int size) {
