@@ -2,7 +2,7 @@
 #include "../include/float64.hxx"
 #include <iostream>
 #include <bitset>
-
+#include <stdexcept>
 
 int main() {
 
@@ -15,3 +15,5 @@ int main() {
 
   return 0;
 }
+
+

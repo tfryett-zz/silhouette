@@ -82,9 +82,4 @@ namespace sil {
 
 }
 
-void export_Cell() {
-  boost::python::class_<sil::Cell>("Cell", boost::python::init<std::string>())
-    .def("setCellname", &sil::Cell::setCellname)
-    .def("getCellname", &sil::Cell::getCellname)
-    ;  
-}
+

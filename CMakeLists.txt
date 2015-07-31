@@ -4,12 +4,6 @@ set(SILHOUETTE_MAJOR_VERSION 0)
 set(SILHOUETTE_MINOR_VERSION 1)
 set(SILHOUETTE_PATCH_VERSION 0)
 
-find_package(PythonInterp)
-find_package(PythonLibs)
-find_package(Boost COMPONENTS python)
-
-include_directories(${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIRS})
-
 # We use delegated constructors so we must use c++11 or greater
 add_definitions("-std=c++11")
 

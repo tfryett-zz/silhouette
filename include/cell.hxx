@@ -20,7 +20,6 @@
 #include <string>
 #include <vector>
 #include <ctime>
-#include <boost/python.hpp>
 #include "polygon.hxx"
 #include "path.hxx"
 #include "cellReference.hxx"
@@ -115,9 +114,5 @@ namespace sil {
     std::vector<CellArray>& getCellArrayList(void) const;
   }; // class Cell
 } // namespace sil
-
-// Python extensions
-void export_Cell(void);
-
 
 #endif // LAYER_HXX

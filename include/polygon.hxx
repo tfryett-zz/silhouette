@@ -138,6 +138,7 @@ namespace sil {
     
   }; // class polygon
 
+
   /*
   Polygon operator+(Polygon& poly1, Polygon& poly2);
 

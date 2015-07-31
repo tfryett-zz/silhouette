@@ -40,11 +40,4 @@ namespace sil {
 
 } // namespace sil
 
-// Add the python extensions
-void export_Layout() {
-  boost::python::class_<sil::Layout>("Layout")
-    .def("addCell", &sil::Layout::addCell)
-    .def("getCells", &sil::Layout::getCells)
-    .def("write", &sil::Layout::write)
-    ;
-}
+

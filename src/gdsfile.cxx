@@ -606,20 +606,8 @@ namespace sil {
 	}
       }
 
-      // gdsII file format is written in big endian
-      /*
-      if (this->sysLittleEndian) {
-	char dataCopy[numBytes];
-	strcpy(dataCopy, output);
-	for (int byteOffset = 0; byteOffset < numBytes; byteOffset++) {
-	  output[byteOffset] = dataCopy[numBytes - 1 - byteOffset];
-	  std::cout << std::bitset<8>(dataCopy[byteOffset]);
-	}
-	std::cout << std::endl;
-      } 
-      */
-
-      this->outputFile.write(reinterpret_cast<char*>(&output), numBytes*sizeof(char));      
+      this->outputFile.write(reinterpret_cast<char*>(&output),
+			     numBytes*sizeof(char));      
     }
 
     void GDS_File::writeCharToFile(char data[], int size) {

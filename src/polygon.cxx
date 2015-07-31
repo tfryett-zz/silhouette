@@ -268,4 +268,64 @@ namespace sil {
     return (intersectionCount % 2 == 1);
   }
 
+  /*
+  // Uses the Weiler-Atherton Algorithm
+  Polygon operator-(Polygon& poly1, Polygon& poly2) {
+
+    // We will use this struct to keep track of the intersection
+    // points. It is important to mark the points as either leaving
+    // or entering the clipping region (@poly2). We will use this
+    // bool value to mark when to add points from @poly1 or @poly2
+    // to the clipped polygon we will return. To that end we will 
+    // keep track of the indices of the points that come right before
+    // the intersection for both polygons to speed the algorithm up.
+    struct intersectPnt {
+      Polygon Pnt;
+      bool enteringPoly2;
+      int poly1FirstIndex;
+      int poly2FirstIndex;
+    };
+    
+    // where we will store all of the points that are the
+    // intersection between sides of the two different polygons
+    std::vector<intersectPnt> intersectionPoints;
+
+    int numVerticesPoly1 = poly1.getVertices().size();
+    int numVerticesPoly2 = poly2.getVertices().size();
+    for (int p1VertexNum = 0; p1VertexNum < numVerticesPoly1; p1VertexNum++) {
+      int secondVertexNumPoly1; // use to make sure we wrap around
+      if (p1VertexNum == numVerticesPoly1 - 1)
+	secondVertexNumPoly1 = 0;
+      else
+	secondVertexNumPoly1 = p1VertexNum + 1;
+      LineSeg p1Lin = LineSeg(poly1.getVertices()[p1VertexNum],
+			      poly1.getVertices()[secondVertexNumPoly1]);
+      for (int p2VertexNum = 0; p2VertexNum < numVerticesPoly2; p2VertexNum++) {
+	int secondVertexNumPoly2;
+	if (p2VertexNum == numVerticesPoly2 - 1)
+	  secondVertexNumPoly2 = 0;
+	else
+	  secondVertexNumPoly2 = p1VertexNum + 1;
+	LineSeg p2Lin = LineSeg(poly1.getVertices()[p1VertexNum],
+				poly1.getVertices()[secondVertexNumPoly2]);
+
+	// test if p2Lin and p1Lin intersect
+	if (lineSegIntersect(p1Lin, p2Lin)) {
+	  // take advantage of the fact that the function
+	  // lineSegIntersect does not allow both LineSegs to have
+	  // the same slope
+	  double errorMargin = 1e-6;
+	  // i.e. p1Lin has slope of infinity. We know p2Lin must
+	  // have a defined slope
+	  if (std::abs(p1Lin.getStartPnt().getX() -
+		       p1Lin.getEndPnt().getX()) < errorMargin) {
+	    
+	  }
+	}
+	
+      } // ends loop over polygon 2 vertices
+    } // ends loop over polygon 1 vertices
+
+  }
+  */
 } // end namespace sil

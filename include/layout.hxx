@@ -20,7 +20,6 @@
 #include <vector>
 #include <string>
 #include <functional>
-#include <boost/python.hpp>
 #include "cell.hxx"
 
 namespace sil {
@@ -66,8 +65,5 @@ namespace sil {
 
   };
 }
-
-// Python extensions
-void export_Layout(void);
 
 #endif // LAYOUT_HXX
