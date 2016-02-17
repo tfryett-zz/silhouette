@@ -58,7 +58,7 @@ namespace sil {
     /// Allows the user to construct an arbitrary oval by specifying the 
     /// major and minor axis. Since specifying the minor axis by a lineseg would 
     /// at best be redudant, instead we use a length to avoid such a problem.
-    Oval(LineSeg majorAxis, double minorAxisLength, int numCoordPnts = 16);
+    Oval(LineSeg majorAxis, double minorAxisLength, int numCoordPnts = 64);
 
     /// \brief Defines an arbitrary oval.
     /// 
@@ -73,7 +73,7 @@ namespace sil {
     /// type of constructor.
     /// raised.
     Oval(CoordPnt usrCenter, double majorAxisLength, double minorAxisLength,
-         int numCoordPnts = 16);
+         int numCoordPnts = 64);
 
   };
 

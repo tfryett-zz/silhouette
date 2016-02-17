@@ -14,8 +14,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "../include/cellArray.hxx"
-#include "../include/cell.hxx"
+#include "cellArray.hxx"
+#include "cell.hxx"
 
 namespace sil {
 

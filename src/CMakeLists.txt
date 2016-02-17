@@ -1,8 +1,8 @@
-# add all c++ files to a variable
-file(GLOB silhouette_SRCS "*.cxx")
+# make a list with all of the header files in it
+file(GLOB silhouette_SRC "*.cxx")
+file(GLOB silhouette_INC "*.hxx")
 
-# make library out of source files
-add_library(silhouette SHARED ${silhouette_SRCS} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
+add_library(silhouette ${silhouette_SRC})
 
-# when requested install them
 install(TARGETS silhouette DESTINATION bin)
+install(FILES ${silhouette_INC} DESTINATION include/silhouette)

@@ -14,7 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "../include/gdsfile.hxx"
+#include "gdsfile.hxx"
 
 namespace sil {
   /// Prevent users from accidentally using utility methods that they should
@@ -30,7 +30,7 @@ namespace sil {
       this->generations = 1; // keep only the last version of each structure
       this->format = 0; // by default be a archive formated file
       this->databaseUnits = 1e-3; // databaseUnits are one thousandth of a user units
-      this->userUnits = 1e-9*this->databaseUnits; // one nanometer
+      this->userUnits = 1e-6*this->databaseUnits; // one micron
       this->refLib1.resize(44, '\0');
       this->refLib2.resize(44, '\0');
       this->sysLittleEndian = this->sysIsLittleEndian();
@@ -478,7 +478,6 @@ namespace sil {
       this->writeInt16ToFile(cellArray->getNumRow());
 
       // -- XY
-      // FIXME!!!!!! NEEDS MORE XY DATUMS
       recordSize = RECORD_LABEL_SIZE + 6*sizeof(int32_t);
       this->writeInt16ToFile(recordSize);
       this->writeInt16ToFile(XY);
@@ -617,6 +616,8 @@ namespace sil {
       this->outputFile.write(data, size);      
     }
 
+    // This is function contains a small trick to determine if a
+    // system is big endian or little endian.
     bool GDS_File::sysIsLittleEndian() {
      uint16_t num = 1;
      return (*(char *)&num == 1);
@@ -642,6 +643,9 @@ namespace sil {
     }
 
 
+    std::vector<Cell*> Read(std::string filename) {
+      
+    }
 
   } // namespace utils
 } // namespace sil

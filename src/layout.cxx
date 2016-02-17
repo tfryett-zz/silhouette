@@ -14,12 +14,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "../include/layout.hxx"
+#include "layout.hxx"
 // keep the gdsfile header here so that it is not automatically 
 // included when one includes "sil.hxx". This will add a barrier for
 // users against creating and handling GDS_File classes themselves,
 // which they should not do.
-#include "../include/gdsfile.hxx" 
+#include "gdsfile.hxx" 
 
 namespace sil {
 

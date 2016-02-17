@@ -30,7 +30,6 @@ typedef double float64;
 #include <stdint.h> // cross-compiler integer datatypes
 #include <stdexcept>
 #include <typeinfo>
-#include <bitset>
 #include "cell.hxx"
 #include "polygon.hxx"
 
@@ -107,6 +106,7 @@ namespace sil {
     const int16_t MASK         = 0x3706;
     const int16_t ENDMASKS     = 0x3800;
 
+
     class GDS_File {
     private:
       std::string filename; //!< The name of the output file.
@@ -129,12 +129,12 @@ namespace sil {
       /// Here are the exact contents of the File Header Record:
       ///
       /// Conent Name:    Hex Code:     Type of Data:
-      /// HEADER	      0002          2-byte integer
-      /// BGNLIB	      0102          12 2-byte integers
-      /// LIBNAME	      0206          ASCII string
+      /// HEADER	  0002          2-byte integer
+      /// BGNLIB	  0102          12 2-byte integers
+      /// LIBNAME	  0206          ASCII string
       /// REFLIBS         1F06          2 45-character ASCII strings
       /// FONTS	          2006          4 44-character ASCII strings
-      /// ATTRTABLE	      2306          44-character ASCII string
+      /// ATTRTABLE	  2306          44-character ASCII string
       /// GENERATION      2202          2-byte integer
       /// FORMAT	  3602          2-byte integer
       /// UNITS	          0305          2 8-byte floats
@@ -266,7 +266,13 @@ namespace sil {
       /// the object's member functions (e.g. Write()).
       GDS_File(std::string usrFilename);
       
+      /// Write the supplied vector of cells to the specified GDSII
+      /// file.
       void Write(const std::vector<Cell*> cellVec);
+
+      /// Read in the specified GDSII file. Return the corresponding
+      /// vector of cell pointers that correspond to the GDSII record.
+      std::vector<Cell*> Read(std::string filename);
 
     }; // class GDS_FILE
   } // namespace utils

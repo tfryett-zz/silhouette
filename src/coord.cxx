@@ -16,7 +16,7 @@
 
 #include <string>
 #include <sstream>
-#include "../include/coord.hxx"
+#include "coord.hxx"
 
 namespace sil {
 

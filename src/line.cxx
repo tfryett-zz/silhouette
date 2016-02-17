@@ -14,7 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "../include/line.hxx"
+#include "line.hxx"
 #include <cmath>
 
 namespace sil {

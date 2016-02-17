@@ -34,6 +34,13 @@ namespace sil {
     /// @usrRadius The radius of the constructed circle.
     Circle(CoordPnt usrCenter, double usrRadius);
     
+    /// \brief The recommended constructor for this class. 
+    ///
+    /// @usrCenter The coordinate of the center of the circle.
+    /// @usrRadius The radius of the constructed circle.
+    /// @numVertices The number of vertices in the polygon to represent the circle.
+    Circle(CoordPnt usrCenter, double usrRadius, int numVertices);
+
   }; // End declaration of class "Circle"
 }
 

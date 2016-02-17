@@ -14,7 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "../include/square.hxx"
+#include "square.hxx"
 
 namespace sil {
   // Use the default constructor for both the Rectangle and the Polygon default

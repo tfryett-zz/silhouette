@@ -14,8 +14,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "../include/rectangle.hxx"
-#include "../include/coord.hxx"
+#include "rectangle.hxx"
+#include "coord.hxx"
 
 namespace sil {
 

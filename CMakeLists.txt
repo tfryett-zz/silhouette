@@ -23,10 +23,8 @@ include_directories("${PROJECT_BINARY_DIR}")
 # for making our library
 add_subdirectory(${SILHOUETTE_SOURCE_DIR}/src)
 
-# for the header files
-add_subdirectory(${SILHOUETTE_SOURCE_DIR}/include)
-
 # for making the tests
 add_subdirectory(${SILHOUETTE_SOURCE_DIR}/tests)
 set(CMAKE_INCLUDE_PATH ./)
+
 

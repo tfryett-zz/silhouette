@@ -14,8 +14,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "../include/cell.hxx"
-#include "../include/gdsfile.hxx" // must keep
+#include "cell.hxx"
+#include "gdsfile.hxx" // must keep
 
 namespace sil {
 

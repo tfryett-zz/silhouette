@@ -14,9 +14,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "../include/line.hxx"
-#include "../include/coord.hxx"
-#include "../include/oval.hxx"
+#include "line.hxx"
+#include "coord.hxx"
+#include "oval.hxx"
 #include <cmath>
 #include <stdexcept>
 
@@ -52,8 +52,10 @@ namespace sil {
     this->center = usrCenter;
   }
 
-  Oval::Oval(LineSeg majorAxis, double minorAxisLength, int numCoordPnts) :
-    Oval(majorAxis.getCenter(), minorAxisLength, numCoordPnts) {
+  Oval::Oval(LineSeg majorAxis,
+	     double minorAxisLength, int numCoordPnts) :
+    Oval(majorAxis.getCenter(), majorAxis.length(), minorAxisLength,
+	 numCoordPnts) {
     this->rotate(majorAxis.getCenter(), majorAxis.angleOffset());
   }
 

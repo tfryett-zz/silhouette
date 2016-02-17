@@ -14,11 +14,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "../include/oval.hxx"
-#include "../include/circle.hxx"
+#include "oval.hxx"
+#include "circle.hxx"
 
 namespace sil {
 
   Circle::Circle(CoordPnt usrCenter, double usrRadius) :
     Oval(usrCenter, usrRadius, usrRadius) {}
+
+  Circle::Circle(CoordPnt usrCenter, double usrRadius, int numVertices) :
+    Oval(usrCenter, usrRadius, usrRadius, numVertices) {}
+
 }
